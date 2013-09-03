@@ -10,7 +10,10 @@ require 'router'
 
 
 # ===== Routes =====
-require 'routes/Index'
+require 'routes/Home'
+require 'routes/Year'
+require 'routes/Month'
+require 'routes/Day'
 
 
 # ===== Store =====
@@ -35,4 +38,5 @@ require 'store'
 
 # ===== Templates =====
 require 'templates/application'
-require 'templates/index'
+require 'templates/home'
+require 'templates/calendar'
