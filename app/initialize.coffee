@@ -29,7 +29,7 @@ require 'store'
 
 
 # ===== Controllers =====
-
+require 'controllers/DayController'
 
 
 # ===== Template Helpers =====
