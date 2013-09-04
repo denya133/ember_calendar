@@ -1,21 +1,23 @@
+<div>
+	{{#linkTo 'day' controller.dateNow.year controller.dateNow.month controller.dateNow.day }}Today{{/linkTo}}
+</div>
+
 <div class=" ">
 	<div class=" year-bar ">
-		<a class=" prev " title="Prev">
-			<span class=" ">Prev</span>
-		</a>
-		<span class=" year ">2013</span>
-		<a class=" next " title="Next">
+		{{#linkTo 'day' controller.yearPrev controller.monthSelected controller.daySelected}}Prev{{/linkTo}}
+		<span class=" year ">{{controller.yearSelected}}</span>
+		{{#linkTo 'day' controller.yearNext controller.monthSelected controller.daySelected}}
 			<span class=" ">Next</span>
-		</a>
+		{{/linkTo}}
 	</div>
 	<div class=" month-bar ">
-		<a class=" prev " title="Prev">
+		{{#linkTo 'day' controller.yearSelected controller.monthPrev controller.daySelected}}
 			<span class=" ">Prev</span>
-		</a>
-		<span class=" month ">September</span>
-		<a class=" next " title="Next">
+		{{/linkTo}}
+		<span class=" month ">{{controller.monthName}}</span>
+		{{#linkTo 'day' controller.yearSelected controller.monthNext controller.daySelected}}
 			<span class=" ">Next</span>
-		</a>
+		{{/linkTo}}
 	</div>
 </div>
 
@@ -47,23 +49,28 @@
 		</tr>
 	</thead>
 	<tbody>
-		
+	</tbody>
+</table>
+
 		{{#each day in controller.daysInMonth}}
 			{{#if day.day}}
 				{{#if day.isCurrent}}
 					<div>
-						<a  style="color: red;"href="#/year/{{unbound controller.yearSelected}}/month/{{unbound controller.monthSelected}}/day/{{unbound day.day}}">{{day.day}}</a>
+					  <div style="background: red;">
+						{{#linkTo 'day' controller.yearSelected controller.monthSelected day.day}}{{day.day}}{{/linkTo}}
+						</div>
 					</div>
 				{{else}}
-					<div><a href="#/year/{{unbound controller.yearSelected}}/month/{{unbound controller.monthSelected}}/day/{{unbound day.day}}">{{day.day}}</a></div>
+					<div>
+						{{#linkTo 'day' controller.yearSelected controller.monthSelected day.day}}{{day.day}}{{/linkTo}}
+					</div>
 				{{/if}}
 			{{else}}
 					<div></div>
 			{{/if}}
 		{{/each}}
 
-	</tbody>
-</table>
+
 
 </br>
 </br>
