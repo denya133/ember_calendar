@@ -52,22 +52,26 @@
 	</tbody>
 </table>
 
-		{{#each day in controller.daysInMonth}}
-			{{#if day.day}}
-				{{#if day.isCurrent}}
-					<div>
-					  <div style="background: red;">
-						{{#linkTo 'day' controller.yearSelected controller.monthSelected day.day}}{{day.day}}{{/linkTo}}
-						</div>
-					</div>
-				{{else}}
-					<div>
-						{{#linkTo 'day' controller.yearSelected controller.monthSelected day.day}}{{day.day}}{{/linkTo}}
-					</div>
-				{{/if}}
-			{{else}}
-					<div></div>
-			{{/if}}
+
+
+		{{#each week in controller.daysByWeeks}}
+			<div>
+			{{#each day in week}}
+				{{#if day.day}}
+					{{#if day.isCurrent}}
+				  	<span style="background: red;">
+					  	{{#linkTo 'day' controller.yearSelected controller.monthSelected day.day}}{{day.day}}{{/linkTo}}
+				  	</span>				
+				  {{else}}
+						<span>
+							{{#linkTo 'day' controller.yearSelected controller.monthSelected day.day}}{{day.day}}{{/linkTo}}
+						</span>
+					{{/if}}
+			  {{else}}
+					<span>&nbsp;&nbsp;</span>
+			  {{/if}}
+			{{/each}}
+			</div>
 		{{/each}}
 
 
