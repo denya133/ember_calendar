@@ -1,7 +1,8 @@
 App = require 'app'
 
 
-App.Router.map ->
+
+App.Router.map ->  
   @route 'home', {path: '/'}
   @resource 'year', {path: '/year/:year_id'}, ->
     @resource 'month', {path: '/month/:month_id'}, ->

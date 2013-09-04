@@ -1,79 +1,66 @@
 <div>
-	{{#linkTo 'day' controller.dateNow.year controller.dateNow.month controller.dateNow.day }}Today{{/linkTo}}
+	{{#linkTo 'day' controller.dateNow.year controller.dateNow.month controller.dateNow.day }}
+		<button type="button" class="btn btn-default" style="width: 350px;">Today</button>
+	{{/linkTo}}
 </div>
 
 <div class=" ">
 	<div class=" year-bar ">
-		{{#linkTo 'day' controller.yearPrev controller.monthSelected controller.daySelected}}Prev{{/linkTo}}
-		<span class=" year ">{{controller.yearSelected}}</span>
+		{{#linkTo 'day' controller.yearPrev controller.monthSelected controller.daySelected}}
+			<button type="button" class="btn btn-default" style="width: 50px;">Prev</button>
+		{{/linkTo}}
+		<span style="margin: 105px;">{{controller.yearSelected}}</span>
 		{{#linkTo 'day' controller.yearNext controller.monthSelected controller.daySelected}}
-			<span class=" ">Next</span>
+			<button type="button" class="btn btn-default" style="width: 50px;">Next</button>
 		{{/linkTo}}
 	</div>
 	<div class=" month-bar ">
 		{{#linkTo 'day' controller.yearSelected controller.monthPrev controller.daySelected}}
-			<span class=" ">Prev</span>
+			<button type="button" class="btn btn-default" style="width: 50px;">Prev</button>
 		{{/linkTo}}
-		<span class=" month ">{{controller.monthName}}</span>
+		<span style="margin: 86px;">{{controller.monthName}}</span>
 		{{#linkTo 'day' controller.yearSelected controller.monthNext controller.daySelected}}
-			<span class=" ">Next</span>
+			<button type="button" class="btn btn-default" style="width: 50px;">Next</button>
 		{{/linkTo}}
 	</div>
 </div>
 
-
-<table class="">
-	<thead>
-		<tr>
-			<th>
-				<span title="Monday">Mo</span>
-			</th>
-			<th>
-				<span title="Tuesday">Tu</span>
-			</th>
-			<th>
-				<span title="Wednesday">We</span>
-			</th>
-			<th>
-				<span title="Thursday">Th</span>
-			</th>
-			<th>
-				<span title="Friday">Fr</span>
-			</th>
-			<th class=" week-end ">
-				<span title="Saturday">Sa</span>
-			</th>
-			<th class=" week-end ">
-				<span title="Sunday">Su</span>
-			</th>
-		</tr>
-	</thead>
-	<tbody>
-	</tbody>
-</table>
-
-
-
+<div style="width: 350px;">
+	<div style="width: 350px;">
+		<span title="Monday" class="week-header">Mon</span>
+		<span title="Tuesday" class="week-header">Tue</span>
+		<span title="Wednesday" class="week-header">Wed</span>
+		<span title="Thursday" class="week-header">Thu</span>
+		<span title="Friday" class="week-header">Fri</span>
+		<span title="Saturday" class="week-header">Sat</span>
+		<span title="Sunday" class="week-header">Sun</span>
+	</div>
 		{{#each week in controller.daysByWeeks}}
-			<div>
+
+			<div class="btn-group">
 			{{#each day in week}}
 				{{#if day.day}}
 					{{#if day.isCurrent}}
-				  	<span style="background: red;">
-					  	{{#linkTo 'day' controller.yearSelected controller.monthSelected day.day}}{{day.day}}{{/linkTo}}
-				  	</span>				
+						{{#linkTo 'day' controller.yearSelected controller.monthSelected day.day}}
+				  	<button type="button" class="btn btn-default" style="background: rgb(255, 204, 0); width: 50px;">
+					  	{{day.day}}
+				  	</button>	
+				  	{{/linkTo}}		
 				  {{else}}
-						<span>
-							{{#linkTo 'day' controller.yearSelected controller.monthSelected day.day}}{{day.day}}{{/linkTo}}
-						</span>
+				  	{{#linkTo 'day' controller.yearSelected controller.monthSelected day.day}}
+						<button type="button" class="btn btn-default" style="width: 50px;">
+							{{day.day}}
+						</button>
+						{{/linkTo}}
 					{{/if}}
 			  {{else}}
-					<span>&nbsp;&nbsp;</span>
+					<button type="button" class="btn btn-default" style="width: 50px;">&nbsp;</button>
 			  {{/if}}
 			{{/each}}
 			</div>
-		{{/each}}
 
+		{{/each}}
+</div>
 
 
 </br>
